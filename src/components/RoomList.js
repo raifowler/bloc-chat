@@ -21,11 +21,21 @@ class RoomList extends Component {
 
   render() {
     return (
+<<<<<<< HEAD
       <div>
         {this.state.rooms.map(room => (
           <div key={this.state.rooms.key}>{room.name}</div>
         ))}
       </div>
+=======
+      <ul className="nav flex-column">
+        {this.state.rooms.map(room => (
+          <li key={this.state.rooms.key} className="nav-item">
+            {room.name}
+          </li>
+        ))}
+      </ul>
+>>>>>>> room-list
     );
   }
 }
