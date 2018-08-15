@@ -23,7 +23,7 @@ class RoomList extends Component {
     return (
       <ul className="nav flex-column">
         {this.state.rooms.map(room => (
-          <li key={this.state.rooms.key} className="nav-item">
+          <li key={room.key} className="nav-item">
             {room.name}
           </li>
         ))}
