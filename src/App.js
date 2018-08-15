@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
+import { Provider } from "react-redux";
+import store from "./store";
+
 import AppNavBar from "./components/layout/AppNavBar";
 import Dashboard from "./components/layout/Dashboard";
 
@@ -14,16 +17,18 @@ import "./App.css";
 class App extends Component {
   render() {
     return (
-      <Router>
-        <div className="App">
-          <AppNavBar />
-          <div className="container-fluid">
-            <Switch>
-              <Route exact path="/" component={Dashboard} />
-            </Switch>
+      <Provider store={store}>
+        <Router>
+          <div className="App">
+            <AppNavBar />
+            <div className="container-fluid">
+              <Switch>
+                <Route exact path="/" component={Dashboard} />
+              </Switch>
+            </div>
           </div>
-        </div>
-      </Router>
+        </Router>
+      </Provider>
 
       // <div className="App">
       //   <nav className="navbar navbar-dark bg-dark flex-md-nowrap p-0 shadow">
