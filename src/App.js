@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import RoomList from "./components/RoomList";
-import "./App.css";
 
 import * as firebase from "firebase";
 
@@ -18,8 +17,15 @@ firebase.initializeApp(config);
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <RoomList firebase={firebase} />
+      <div id="wrapper">
+        <div className="container-fluid">
+          <div className="row">
+            <nav className="col-sm-3 col-12 bg-light sidebar">
+              <h4>Bloc Chat</h4>
+              <RoomList firebase={firebase} />
+            </nav>
+          </div>
+        </div>
       </div>
     );
   }
