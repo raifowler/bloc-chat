@@ -17,11 +17,18 @@ firebase.initializeApp(config);
 class App extends Component {
   render() {
     return (
-      <div id="wrapper">
+      <div>
+        <nav className="navbar navbar-dark bg-dark flex-md-nowrap p-0 shadow">
+          <div className="col-sm-3">
+            <a href="" className="navbar-brand">
+              Bloc Chat
+            </a>
+            <button className="btn btn- mx-2 my-1">Add Room</button>
+          </div>
+        </nav>
         <div className="container-fluid">
           <div className="row">
-            <nav className="col-sm-3 col-12 bg-light sidebar">
-              <h4>Bloc Chat</h4>
+            <nav className="col-sm-3 col-12 bg-light sidebar pt-2">
               <RoomList firebase={firebase} />
             </nav>
           </div>

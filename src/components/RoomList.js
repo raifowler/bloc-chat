@@ -5,7 +5,8 @@ class RoomList extends Component {
     super(props);
 
     this.state = {
-      rooms: []
+      rooms: [],
+      showModal: false
     };
 
     this.roomsRef = this.props.firebase.database().ref("rooms");
@@ -19,11 +20,15 @@ class RoomList extends Component {
     });
   }
 
+  showModal = () => {
+    this.setState({ showModal: true });
+  };
+
   render() {
     return (
       <ul className="nav flex-column">
         {this.state.rooms.map(room => (
-          <li key={room.key} className="nav-item">
+          <li key={room.key} className="nav-item py-1">
             {room.name}
           </li>
         ))}
