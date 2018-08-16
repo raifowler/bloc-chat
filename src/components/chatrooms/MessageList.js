@@ -1,32 +1,33 @@
 import React, { Component } from "react";
+// import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
+import RoomList from "./RoomList";
 
-class RoomList extends Component {
+class MessageList extends Component {
   render() {
-    const { firestore, rooms } = this.props;
+    const { rooms, messages } = this.props;
 
-    if (rooms) {
+    if ((rooms, messages)) {
       return (
         <div>
           <div className="row">
             <div className="col">
-              <h4 className="text-center">Chat Rooms</h4>
+              <h4 className="text-center">{this.props.roomName}</h4>
               <ul className="list-group list-group-flush">
                 {rooms.map(room => (
                   <li key={room.id} className="list-group-item">
                     <button className="btn btn-link mx-0 px-0">
                       {room.name}
                     </button>
-                    <button
-                      onClick={() => {
-                        firestore.delete({ collection: "rooms", doc: room.id });
-                      }}
-                      className=" btn btn-danger float-right"
-                    >
-                      <i className="fas fa-trash" />
+                  </li>
+                ))}
+                {messages.map(message => (
+                  <li key={message.id} className="list-group-item">
+                    <button className="btn btn-link mx-0 px-0">
+                      {message.content}
                     </button>
                   </li>
                 ))}
@@ -41,14 +42,14 @@ class RoomList extends Component {
   }
 }
 
-RoomList.propTypes = {
-  firestore: PropTypes.object.isRequired,
-  rooms: PropTypes.array
+MessageList.propTypes = {
+  firestore: PropTypes.object.isRequired
 };
 
 export default compose(
-  firestoreConnect([{ collection: "rooms" }]),
+  firestoreConnect([{ collection: "messages" }]),
   connect(state => ({
+    messages: state.firestore.ordered.messages,
     rooms: state.firestore.ordered.rooms
   }))
-)(RoomList);
+)(MessageList);

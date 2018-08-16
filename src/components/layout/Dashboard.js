@@ -1,7 +1,7 @@
 import React from "react";
 
 import RoomList from "../chatrooms/RoomList";
-import ChatRoom from "../chatrooms/ChatRoom";
+import MessageList from "../chatrooms/MessageList";
 
 export default () => {
   return (
@@ -10,7 +10,7 @@ export default () => {
         <RoomList />
       </div>
       <div className="col-md-9">
-        <ChatRoom />
+        <MessageList />
       </div>
     </div>
   );
