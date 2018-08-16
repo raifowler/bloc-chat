@@ -1,7 +1,20 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import AddRoom from "../chatrooms/AddRoom";
 
 class AppNavBar extends Component {
+  state = {
+    show: false
+  };
+
+  showModal = () => {
+    this.setState({ show: true });
+  };
+
+  hideModal = () => {
+    this.setState({ show: false });
+  };
+
   render() {
     return (
       <nav className="navbar navbar-expand-md navbar-dark bg-dark mb-4">
@@ -18,11 +31,16 @@ class AppNavBar extends Component {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarMain">
+            <AddRoom show={this.state.show} handleClose={this.hideModal} />
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
-                <Link to="/" className="btn btn-success btn-block">
+                <button
+                  type="button"
+                  className="btn btn-success btn-block"
+                  onClick={this.showModal}
+                >
                   Add Room
-                </Link>
+                </button>
               </li>
             </ul>
           </div>
