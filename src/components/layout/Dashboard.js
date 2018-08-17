@@ -1,7 +1,7 @@
 import React from "react";
 
-import RoomList from "../chatrooms/RoomList";
-import MessageList from "../chatrooms/MessageList";
+import RoomList from "../rooms/RoomList";
+import MessageList from "../messages/MessageList";
 
 export default () => {
   return (
